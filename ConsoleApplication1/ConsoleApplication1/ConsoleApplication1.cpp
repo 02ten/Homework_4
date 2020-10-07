@@ -46,7 +46,26 @@ double triangle_area(double h, double w) {
 double circle_area(double r) {
     return r * r * PI;
 }
-
+int convert(char n) {
+    switch (n) {
+    case'I':return 1;
+        break;
+    case 'V':return 5;
+        break;
+    case 'X': return 10;
+        break;
+    case 'L':return 50;
+        break;
+    case 'C':return 100;
+        break;
+    case 'D':return 500;
+        break;
+    case 'M':return 1000;
+        break;
+    default:return - 1;
+        break;
+    }
+}
 int main()
 {
     int L;
@@ -93,7 +112,10 @@ int main()
         cout << "------------------------------------------------------------------------\n"; 
         break;
     case(6):
-        
+        string s;
+        int c,m;
+        cout << "Enter a line: ";
+        cin >> s;
         break;
     default: break;
     }
