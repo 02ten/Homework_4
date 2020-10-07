@@ -3,8 +3,9 @@
 
 #include <iostream>
 #include <fstream>
+#include <cmath>
 using namespace std;
-const double PI = 3.14;
+const double PI = 3.14159265;
 void number_1() {
     ofstream out1("C:\\Users\\IVC1-5\\Desktop\\numbers.txt");
     int x;
@@ -91,13 +92,8 @@ int main()
         cout << "------------------------------------------------------------------------\n"; 
         cout << "------------------------------------------------------------------------\n"; 
         break;
-    case(5):
-        for (int i = 0; i < 11; i++) // Запускает цикл со счетчиком i от 0 до 11 по правилу i++
-            for (int j = 0; j < 80; j++) // Запускает цикл со счетчиком j от 0 до 80 по правилу j++
-                if (abs(sin(double(j) / 3) - double(i - 5) / 5) < 0.1) // Если abs(sin(double(j)/3) - double(i-5)/5) < 0.1
-                    cout << '*'; // Выводит "*"
-                else // Иначе
-                    cout << ' '; // Выводит " "
+    case(6):
+        
         break;
     default: break;
     }
