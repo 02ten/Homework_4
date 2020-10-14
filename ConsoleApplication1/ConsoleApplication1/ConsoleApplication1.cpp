@@ -26,6 +26,7 @@ void number_1() {
     }
     cout << "Sum = " << sum-x;
 }
+
 int number_2(int num) {
     if (num > 0) {
         return 1;
@@ -37,9 +38,11 @@ int number_2(int num) {
         return - 1;
     }
 }
+
 int rand(int si) {
     return(37 * si + 3) % 64;
 }
+
 double rect_area(double l,double w) {
     return l * w;
 }
@@ -49,6 +52,7 @@ double triangle_area(double h, double w) {
 double circle_area(double r) {
     return r * r * PI;
 }
+
 int convert(char n) {
     switch (n) {
     case'I':return 1;
@@ -71,6 +75,7 @@ int convert(char n) {
         break;
     }
 }
+
 int conv(char a)
 {
     if (a >= 'A' && a <= 'Z') {
@@ -213,7 +218,7 @@ int main()
     }
     case(9):
     {
-        string s1;
+        string s1, s2;
         int n1, n2, c = 0;
         bool isError = 0;
         cin >> s1 >> n1 >> n2;  
@@ -231,11 +236,11 @@ int main()
         if (!isError) {
             while (c != 0)
             {
-                cout<<revconv(c % n2);
+                s2=revconv(c % n2) + s2;
                 c = c / n2;
             }
         }
-       
+        cout << s2;
     }
     default:break;
     }
