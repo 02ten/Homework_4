@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <fstream>
+#include <ctime>
 #include <cmath>
 using namespace std;
 const double PI = 3.14159265;
@@ -36,7 +37,9 @@ int number_2(int num) {
         return - 1;
     }
 }
-
+int rand(int si) {
+    return(37 * si + 3) % 64;
+}
 double rect_area(double l,double w) {
     return l * w;
 }
@@ -66,8 +69,25 @@ int convert(char n) {
         break;
     }
 }
+int conv(char a)
+{
+    if (a >= '0' && a <= '9')
+        return int(a - '0');
+    if (a >= 'A' && a <= 'Z')
+        return 10 + int(a - 'A');
+}
+char revconv(int a)
+{
+    if (a >= 0 && a <= 9)
+        return char('0' + a);
+    else
+        return char('A' - 10 + a);
+}
 int main()
 {
+    setlocale(0, "");
+    string s;
+    int c = 0, m = 0;
     int L;
     cout << "Choose a task ";
     cin >> L;
@@ -82,7 +102,7 @@ int main()
     case(3):
         double h, w, r, l;
         cout << "Enter rectangle's width ";
-        cin >> w;
+           cin >> w;
         cout << "Enter rectangle's lenght ";
         cin >> l;
         cout << "Rectangle's area = " << rect_area(l, w)<<'\n';
@@ -112,12 +132,76 @@ int main()
         cout << "------------------------------------------------------------------------\n"; 
         break;
     case(6):
-        string s;
-        int c,m;
-        cout << "Enter a line: ";
-        cin >> s;
+        cin >> s; 
+        for (int i = s.length() - 1; i >= 0; i--) 
+        {
+            int temp = convert(s[i]); 
+            if (temp >= m) 
+                m = temp; 
+
+            if (temp == m) 
+                c += temp; 
+            else
+                c -= temp; 
+        }
+        cout << c<<'\n';
         break;
-    default: break;
+    case(7):
+        cout << rand(time(NULL))<<"\n";
+        break;
+    case(8):
+    {
+        float a[3][4] = {
+        {5, 2, 0, 10},
+        {3, 5, 2, 5},
+        {20, 0, 0, 0}
+        };
+        float b[4][2] = {
+            {1.2, 0.5},
+            {2.8, 0.4},
+            {5, 1},
+            {2, 1.5}
+        };
+        float c[3][2] = {
+            {0, 0},
+            {0, 0},
+            {0, 0}
+        };
+        for (int i = 0; i < 3; i++)
+            for (int j = 0; j < 2; j++)
+                for (int s = 0; s < 4; s++)
+                    c[i][j] += a[i][s] * b[s][j];
+        for (int i = 0; i < 3; i++)
+        {
+            for (int j = 0; j < 2; j++)
+                cout << c[i][j] << ' ';
+            cout << "\n";
+        }
+        cout << "1) Второй выручил больше всех, третий меньше всех.\n";
+        cout << "2) Первый получил наибольшие, второй наименьшие.\n";
+        cout << "3) " << c[0][0] + c[1][0] + c[2][0] << "\n";
+        cout << "4) " << c[0][1] + c[1][1] + c[2][1] << "\n";
+        cout << "5) " << c[0][0] + c[1][0] + c[2][0] + c[0][1] + c[1][1] + c[2][1] << "\n";
+    }
+    case(9):
+    {
+        string s1, s2;
+        int n1, n2, c = 0;
+        cin >> s1 >> n1 >> n2;
+        for (int i = 0; i < s1.length(); i++)
+        {
+            c *= n1;
+            c += conv(s1[i]);
+        }
+        //cout << c << "\n";
+        while (c != 0)
+        {
+            s2 = revconv(c % n2) + s2;
+            c = c / n2;
+        }
+        cout << s2;
+    }
+    default:break;
     }
 }
 
